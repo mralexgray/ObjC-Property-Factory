@@ -1,5 +1,11 @@
 # ObjC-Property-Factory
 
+## Synopsis
+
+ObjC Property Factory lets you create property getter and setter method implementations automatically. In effect it allows you to define your class normally and then automatically generate getter & setter method implementations at runtime.
+
+This can be very handy as a way of providing a property based facade on top of a "objectForKey:" style object such as NSDictionary (hello JSON!) or NSUserDefaults.
+
 ## License
 
 This code is licensed under the 2-clause BSD license ("Simplified BSD License" or "FreeBSD License") license. The license is reproduced below:
@@ -37,6 +43,7 @@ or implied, of Jonathan Wight.
     @interface NSUserDefaults (Example)
 
     @property (readwrite, nonatomic, retain) NSString *username;
+    @property (readwrite, nonatomic, assign) NSPoint position;
 
     @end
 
@@ -49,6 +56,7 @@ or implied, of Jonathan Wight.
     @implementation NSUserDefaults (Example)
 
     @dynamic username;
+    @dynamic position;
 
     + (void)load
         {
@@ -68,3 +76,11 @@ or implied, of Jonathan Wight.
     // #############################################################################
 
     [NSUserDefaults standardDefaults].username = @"bob";
+    [NSUserDefaults standardDefaults].position = (NSPoint){ 42, 24 };
+
+## TODO/BUGS
+
+* Not very robustly tested.
+* Does not support all basic C types, yet.
+* Does not support any struct types yet (except NSPoint).
+* Needs more robust error handling (mainly to do with property attributes).
