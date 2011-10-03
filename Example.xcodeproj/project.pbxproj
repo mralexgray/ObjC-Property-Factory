@@ -30,7 +30,6 @@
 		452B3BAD143A3817009B97A3 /* Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Test; sourceTree = BUILT_PRODUCTS_DIR; };
 		452B3BB1143A3817009B97A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		452B3BB4143A3817009B97A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		452B3BB7143A3817009B97A3 /* Test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Test-Prefix.pch"; sourceTree = "<group>"; };
 		452B3BC2143A3842009B97A3 /* CMyDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMyDefaults.h; sourceTree = "<group>"; };
 		452B3BC3143A3842009B97A3 /* CMyDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMyDefaults.m; sourceTree = "<group>"; };
 		459A3A8F143A461F00EA0DF1 /* NSUserDefaults+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Test.h"; sourceTree = "<group>"; };
@@ -86,17 +85,8 @@
 				452B3BC3143A3842009B97A3 /* CMyDefaults.m */,
 				459A3A8F143A461F00EA0DF1 /* NSUserDefaults+Test.h */,
 				459A3A90143A461F00EA0DF1 /* NSUserDefaults+Test.m */,
-				452B3BB6143A3817009B97A3 /* Supporting Files */,
 			);
 			path = Example;
-			sourceTree = "<group>";
-		};
-		452B3BB6143A3817009B97A3 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				452B3BB7143A3817009B97A3 /* Test-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,8 +200,6 @@
 		452B3BBD143A3817009B97A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Test/Test-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -219,8 +207,6 @@
 		452B3BBE143A3817009B97A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Test/Test-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
