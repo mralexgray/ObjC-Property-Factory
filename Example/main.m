@@ -20,6 +20,11 @@ int main (int argc, const char * argv[])
 //        theDefaults.timestamp = 42;
         theDefaults.name = @"This is a test";
         NSLog(@"%@", theDefaults.name);
+
+        theDefaults.position = (NSPoint){ 10, 20 };
+        NSLog(@"%@", NSStringFromPoint(theDefaults.position));
+
+
 //        NSLog(@"%g", theDefaults.timestamp);
         
 //        [NSUserDefaults standardUserDefaults].username = @"Steve J.";
