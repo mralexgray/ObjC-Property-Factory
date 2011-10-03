@@ -10,6 +10,9 @@
 		452B3BB2143A3817009B97A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452B3BB1143A3817009B97A3 /* Foundation.framework */; };
 		452B3BB5143A3817009B97A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 452B3BB4143A3817009B97A3 /* main.m */; };
 		452B3BB9143A3817009B97A3 /* Test.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 452B3BB8143A3817009B97A3 /* Test.1 */; };
+		452B3BC1143A3836009B97A3 /* CPropertyFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 452B3BC0143A3836009B97A3 /* CPropertyFactory.m */; };
+		452B3BC4143A3842009B97A3 /* CMyDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 452B3BC3143A3842009B97A3 /* CMyDefaults.m */; };
+		459A3A91143A461F00EA0DF1 /* NSUserDefaults+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 459A3A90143A461F00EA0DF1 /* NSUserDefaults+Test.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,8 +32,14 @@
 		452B3BAD143A3817009B97A3 /* Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Test; sourceTree = BUILT_PRODUCTS_DIR; };
 		452B3BB1143A3817009B97A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		452B3BB4143A3817009B97A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		452B3BB7143A3817009B97A3 /* Test-Prefix.pch */ = {isa = PBXFileReference; path = "Test-Prefix.pch"; sourceTree = "<group>"; };
+		452B3BB7143A3817009B97A3 /* Test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Test-Prefix.pch"; sourceTree = "<group>"; };
 		452B3BB8143A3817009B97A3 /* Test.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Test.1; sourceTree = "<group>"; };
+		452B3BBF143A3836009B97A3 /* CPropertyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPropertyFactory.h; sourceTree = "<group>"; };
+		452B3BC0143A3836009B97A3 /* CPropertyFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPropertyFactory.m; sourceTree = "<group>"; };
+		452B3BC2143A3842009B97A3 /* CMyDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMyDefaults.h; sourceTree = "<group>"; };
+		452B3BC3143A3842009B97A3 /* CMyDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMyDefaults.m; sourceTree = "<group>"; };
+		459A3A8F143A461F00EA0DF1 /* NSUserDefaults+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Test.h"; sourceTree = "<group>"; };
+		459A3A90143A461F00EA0DF1 /* NSUserDefaults+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Test.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +83,12 @@
 			isa = PBXGroup;
 			children = (
 				452B3BB4143A3817009B97A3 /* main.m */,
+				452B3BBF143A3836009B97A3 /* CPropertyFactory.h */,
+				452B3BC0143A3836009B97A3 /* CPropertyFactory.m */,
+				452B3BC2143A3842009B97A3 /* CMyDefaults.h */,
+				452B3BC3143A3842009B97A3 /* CMyDefaults.m */,
+				459A3A8F143A461F00EA0DF1 /* NSUserDefaults+Test.h */,
+				459A3A90143A461F00EA0DF1 /* NSUserDefaults+Test.m */,
 				452B3BB8143A3817009B97A3 /* Test.1 */,
 				452B3BB6143A3817009B97A3 /* Supporting Files */,
 			);
@@ -140,6 +155,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				452B3BB5143A3817009B97A3 /* main.m in Sources */,
+				452B3BC1143A3836009B97A3 /* CPropertyFactory.m in Sources */,
+				452B3BC4143A3842009B97A3 /* CMyDefaults.m in Sources */,
+				459A3A91143A461F00EA0DF1 /* NSUserDefaults+Test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +248,7 @@
 				452B3BBE143A3817009B97A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

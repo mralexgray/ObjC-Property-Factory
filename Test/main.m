@@ -8,15 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
-int main (int argc, const char * argv[])
-{
+#import "CMyDefaults.h"
+#import "NSUserDefaults+Test.h"
 
-    @autoreleasepool {
+int main (int argc, const char * argv[])
+    {
+    @autoreleasepool
+        {
+        CMyDefaults *theDefaults = [[CMyDefaults alloc] init];;
+//        theDefaults.name = @"Hello world";
+//        theDefaults.timestamp = 42;
+        theDefaults.name = @"This is a test";
+        NSLog(@"%@", theDefaults.name);
+//        NSLog(@"%g", theDefaults.timestamp);
         
-        // insert code here...
-        NSLog(@"Hello, World!");
+//        [NSUserDefaults standardUserDefaults].username = @"Steve J.";
         
-    }
+        }
     return 0;
-}
+    }
 
