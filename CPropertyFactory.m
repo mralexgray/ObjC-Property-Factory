@@ -130,7 +130,7 @@
     id theSetterIMPBlock = NULL;
 
     // #####################################################################
-
+    // http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
     if (theType[0] == '@')
         {
         theGetterIMPBlock = ^(id _self) { return(inGetter(_self, thePropertyName)); };
@@ -138,7 +138,12 @@
         }
     else if (theType[0] != '{')
         {
-        if (strcmp(theType, @encode(short)) == 0)
+        if (strcmp(theType, @encode(BOOL)) == 0)
+            {
+            theGetterIMPBlock = SIMPLE_GETTER(bool, Bool);
+            theSetterIMPBlock = SIMPLE_SETTER(bool, Bool);
+            }
+        else if (strcmp(theType, @encode(short)) == 0)
             {
             theGetterIMPBlock = SIMPLE_GETTER(short, Short);
             theSetterIMPBlock = SIMPLE_SETTER(short, Short);

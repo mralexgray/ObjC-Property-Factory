@@ -13,5 +13,6 @@
 @property (readwrite, nonatomic, retain) NSString *name;
 @property (readwrite, nonatomic, assign) NSTimeInterval timestamp;
 @property (readwrite, nonatomic, assign) NSPoint position;
+@property (readwrite, nonatomic, assign) BOOL yorn;
 
 @end

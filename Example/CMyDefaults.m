@@ -19,6 +19,7 @@
 @dynamic name;
 @dynamic timestamp;
 @dynamic position;
+@dynamic yorn;
 
 @synthesize storage;
 

@@ -24,6 +24,8 @@ int main (int argc, const char * argv[])
         theDefaults.position = (NSPoint){ 10, 20 };
         NSLog(@"%@", NSStringFromPoint(theDefaults.position));
 
+        theDefaults.yorn = YES;
+        NSLog(@"%d", theDefaults.yorn);
 
 //        NSLog(@"%g", theDefaults.timestamp);
         
