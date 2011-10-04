@@ -79,7 +79,7 @@
     {
     BOOL theDynamicFlag = NO;
     BOOL theReadonlyFlag = NO;
-    BOOL theNonAtomicFlag = NO;
+//    BOOL theNonAtomicFlag = NO;
     const char *theType = NULL;
 
     unsigned int theAttributeCount = 0;
@@ -89,6 +89,7 @@
     // See http://developer.apple.com/library/ios/#DOCUMENTATION/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtPropertyIntrospection.html for all flags.
     for (unsigned int theAttributeIndex = 0; theAttributeIndex != theAttributeCount; ++theAttributeIndex)
         {
+//        NSLog(@"%s: %s", theAttributes[theAttributeIndex].name, theAttributes[theAttributeIndex].value);
         if (strlen(theAttributes[theAttributeIndex].name) == 1)
             {
             switch (theAttributes[theAttributeIndex].name[0]) {
@@ -102,20 +103,20 @@
                     theReadonlyFlag = YES;
                     break;
                 case 'N':
-                    theNonAtomicFlag = YES;
+//                    theNonAtomicFlag = YES;
                     break;
                 }
             }
         }
     
-    if (theAttributes != NULL)
-        {
-        free(theAttributes);
-        }
-
     if (theDynamicFlag == NO)
         {
 //        NSLog(@"Cannot create IMPs for non-dynamic properties");
+        return(NO);
+        }
+
+    if (theType == NULL)
+        {
         return(NO);
         }
 
@@ -128,6 +129,8 @@
 
     id theGetterIMPBlock = NULL;
     id theSetterIMPBlock = NULL;
+
+    NSLog(@"Creating accessors for: %@", thePropertyName);
 
     // #####################################################################
     // http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
@@ -163,6 +166,10 @@
             theGetterIMPBlock = SIMPLE_GETTER(double, Double);
             theSetterIMPBlock = SIMPLE_SETTER(double, Double);
             }
+        else
+            {
+            NSAssert1(NO, @"Unknown simple type: '%s'", theType);
+            }
         }
     else if (theType[0] == '{')
         {
@@ -177,16 +184,24 @@
 
     // #####################################################################
 
-    if (theGetterIMPBlock != NULL && inGetter != NULL)
-        {
-        IMP theGetterFunctionPtr = imp_implementationWithBlock((__bridge void *)theGetterIMPBlock);
-        class_addMethod(inClass, NSSelectorFromString(theGetterName), theGetterFunctionPtr, [theGetterType UTF8String]);
-        }
+    NSAssert(theGetterIMPBlock != NULL, @"No getter implementation block");
+    NSAssert(inGetter != NULL, @"No getter block");
 
-    if (theReadonlyFlag == NO && theSetterIMPBlock != NULL && inGetter != NULL)
+    IMP theGetterFunctionPtr = imp_implementationWithBlock((__bridge void *)theGetterIMPBlock);
+    class_addMethod(inClass, NSSelectorFromString(theGetterName), theGetterFunctionPtr, [theGetterType UTF8String]);
+
+    if (theReadonlyFlag == NO)
         {
+        NSAssert(theSetterIMPBlock != NULL, @"No setter implementation block");
+        NSAssert(inSetter != NULL, @"No setter block");
+
         IMP theSetterFunctionPtr = imp_implementationWithBlock((__bridge void *)theSetterIMPBlock);
         class_addMethod(inClass, NSSelectorFromString(theSetterName), theSetterFunctionPtr, [theSetterType UTF8String]);
+        }
+
+    if (theAttributes != NULL)
+        {
+        free(theAttributes);
         }
 
     return(YES);
