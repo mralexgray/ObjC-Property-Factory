@@ -130,7 +130,7 @@
     id theGetterIMPBlock = NULL;
     id theSetterIMPBlock = NULL;
 
-    NSLog(@"Creating accessors for: %@", thePropertyName);
+//    NSLog(@"Creating accessors for: %@", thePropertyName);
 
     // #####################################################################
     // http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
