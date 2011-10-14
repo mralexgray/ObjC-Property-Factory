@@ -156,6 +156,16 @@
             theGetterIMPBlock = SIMPLE_GETTER(int, Int);
             theSetterIMPBlock = SIMPLE_SETTER(int, Int);
             }
+        else if (strcmp(theType, @encode(unsigned int)) == 0)
+            {
+            theGetterIMPBlock = SIMPLE_GETTER(unsignedInt, UnsignedInt);
+            theSetterIMPBlock = SIMPLE_SETTER(unsigned int, UnsignedInt);
+            }
+        else if (strcmp(theType, @encode(long)) == 0)
+            {
+            theGetterIMPBlock = SIMPLE_GETTER(long, Long);
+            theSetterIMPBlock = SIMPLE_SETTER(long, Long);
+            }
         else if (strcmp(theType, @encode(float)) == 0)
             {
             theGetterIMPBlock = SIMPLE_GETTER(float, Float);
