@@ -18,14 +18,16 @@ int main (int argc, const char * argv[])
         CMyDefaults *theDefaults = [[CMyDefaults alloc] init];;
 //        theDefaults.name = @"Hello world";
 //        theDefaults.timestamp = 42;
+        theDefaults.yorn = YES;
+        NSLog(@"%d", theDefaults.yorn);
+
+
         theDefaults.name = @"This is a test";
         NSLog(@"%@", theDefaults.name);
 
         theDefaults.position = (NSPoint){ 10, 20 };
         NSLog(@"%@", NSStringFromPoint(theDefaults.position));
 
-        theDefaults.yorn = YES;
-        NSLog(@"%d", theDefaults.yorn);
 
 //        NSLog(@"%g", theDefaults.timestamp);
         

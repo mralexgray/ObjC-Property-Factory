@@ -34,7 +34,7 @@
             BlueprintIdentifier = "452B3BAC143A3817009B97A3"
             BuildableName = "Test"
             BlueprintName = "Test"
-            ReferencedContainer = "container:Example.xcodeproj">
+            ReferencedContainer = "container:Example_OSX.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,7 +52,7 @@
             BlueprintIdentifier = "452B3BAC143A3817009B97A3"
             BuildableName = "Test"
             BlueprintName = "Test"
-            ReferencedContainer = "container:Example.xcodeproj">
+            ReferencedContainer = "container:Example_OSX.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

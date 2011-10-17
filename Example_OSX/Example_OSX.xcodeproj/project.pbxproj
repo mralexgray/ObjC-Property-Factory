@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		451DEB9F144CD9BC00F44317 /* CPropertyFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 451DEB9E144CD9BC00F44317 /* CPropertyFactory.m */; };
 		452B3BB2143A3817009B97A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452B3BB1143A3817009B97A3 /* Foundation.framework */; };
-		452B3BB5143A3817009B97A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 452B3BB4143A3817009B97A3 /* main.m */; };
-		452B3BC4143A3842009B97A3 /* CMyDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 452B3BC3143A3842009B97A3 /* CMyDefaults.m */; };
-		459A3A91143A461F00EA0DF1 /* NSUserDefaults+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 459A3A90143A461F00EA0DF1 /* NSUserDefaults+Test.m */; };
-		459A3A9E143A6CAF00EA0DF1 /* CPropertyFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 459A3A9D143A6CAF00EA0DF1 /* CPropertyFactory.m */; };
+		4585480A144CD9EE0075019C /* CMyDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 45854803144CD9EE0075019C /* CMyDefaults.m */; };
+		4585480B144CD9EE0075019C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45854807144CD9EE0075019C /* main.m */; };
+		4585480C144CD9EE0075019C /* NSUserDefaults+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 45854809144CD9EE0075019C /* NSUserDefaults+Test.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,15 +27,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		451DEB9D144CD9BC00F44317 /* CPropertyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPropertyFactory.h; path = ../CPropertyFactory.h; sourceTree = "<group>"; };
+		451DEB9E144CD9BC00F44317 /* CPropertyFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPropertyFactory.m; path = ../CPropertyFactory.m; sourceTree = "<group>"; };
 		452B3BAD143A3817009B97A3 /* Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Test; sourceTree = BUILT_PRODUCTS_DIR; };
 		452B3BB1143A3817009B97A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		452B3BB4143A3817009B97A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		452B3BC2143A3842009B97A3 /* CMyDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMyDefaults.h; sourceTree = "<group>"; };
-		452B3BC3143A3842009B97A3 /* CMyDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMyDefaults.m; sourceTree = "<group>"; };
-		459A3A8F143A461F00EA0DF1 /* NSUserDefaults+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Test.h"; sourceTree = "<group>"; };
-		459A3A90143A461F00EA0DF1 /* NSUserDefaults+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Test.m"; sourceTree = "<group>"; };
-		459A3A9C143A6CAF00EA0DF1 /* CPropertyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPropertyFactory.h; sourceTree = "<group>"; };
-		459A3A9D143A6CAF00EA0DF1 /* CPropertyFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPropertyFactory.m; sourceTree = "<group>"; };
+		45854802144CD9EE0075019C /* CMyDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMyDefaults.h; sourceTree = "<group>"; };
+		45854803144CD9EE0075019C /* CMyDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMyDefaults.m; sourceTree = "<group>"; };
+		45854807144CD9EE0075019C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		45854808144CD9EE0075019C /* NSUserDefaults+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Test.h"; sourceTree = "<group>"; };
+		45854809144CD9EE0075019C /* NSUserDefaults+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Test.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +53,9 @@
 		452B3BA2143A3817009B97A3 = {
 			isa = PBXGroup;
 			children = (
-				459A3A9C143A6CAF00EA0DF1 /* CPropertyFactory.h */,
-				459A3A9D143A6CAF00EA0DF1 /* CPropertyFactory.m */,
-				452B3BB3143A3817009B97A3 /* Example */,
+				451DEB9D144CD9BC00F44317 /* CPropertyFactory.h */,
+				451DEB9E144CD9BC00F44317 /* CPropertyFactory.m */,
+				45854801144CD9EE0075019C /* Example_OSX */,
 				452B3BB0143A3817009B97A3 /* Frameworks */,
 				452B3BAE143A3817009B97A3 /* Products */,
 			);
@@ -77,16 +77,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		452B3BB3143A3817009B97A3 /* Example */ = {
+		45854801144CD9EE0075019C /* Example_OSX */ = {
 			isa = PBXGroup;
 			children = (
-				452B3BB4143A3817009B97A3 /* main.m */,
-				452B3BC2143A3842009B97A3 /* CMyDefaults.h */,
-				452B3BC3143A3842009B97A3 /* CMyDefaults.m */,
-				459A3A8F143A461F00EA0DF1 /* NSUserDefaults+Test.h */,
-				459A3A90143A461F00EA0DF1 /* NSUserDefaults+Test.m */,
+				45854802144CD9EE0075019C /* CMyDefaults.h */,
+				45854803144CD9EE0075019C /* CMyDefaults.m */,
+				45854807144CD9EE0075019C /* main.m */,
+				45854808144CD9EE0075019C /* NSUserDefaults+Test.h */,
+				45854809144CD9EE0075019C /* NSUserDefaults+Test.m */,
 			);
-			path = Example;
+			name = Example_OSX;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,7 +118,7 @@
 				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = toxicsoftware.com;
 			};
-			buildConfigurationList = 452B3BA7143A3817009B97A3 /* Build configuration list for PBXProject "Example" */;
+			buildConfigurationList = 452B3BA7143A3817009B97A3 /* Build configuration list for PBXProject "Example_OSX" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -140,10 +140,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				452B3BB5143A3817009B97A3 /* main.m in Sources */,
-				452B3BC4143A3842009B97A3 /* CMyDefaults.m in Sources */,
-				459A3A91143A461F00EA0DF1 /* NSUserDefaults+Test.m in Sources */,
-				459A3A9E143A6CAF00EA0DF1 /* CPropertyFactory.m in Sources */,
+				451DEB9F144CD9BC00F44317 /* CPropertyFactory.m in Sources */,
+				4585480A144CD9EE0075019C /* CMyDefaults.m in Sources */,
+				4585480B144CD9EE0075019C /* main.m in Sources */,
+				4585480C144CD9EE0075019C /* NSUserDefaults+Test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +187,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -214,7 +215,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		452B3BA7143A3817009B97A3 /* Build configuration list for PBXProject "Example" */ = {
+		452B3BA7143A3817009B97A3 /* Build configuration list for PBXProject "Example_OSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				452B3BBA143A3817009B97A3 /* Debug */,
