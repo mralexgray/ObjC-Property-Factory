@@ -77,6 +77,9 @@
     
 - (BOOL)configure:(Class)inClass property:(objc_property_t)inProperty getter:(PropertyGetterBlock)inGetter setter:(PropertySetterBlock)inSetter error:(NSError **)outError
     {
+    inGetter = [inGetter copy];
+    inSetter = [inSetter copy];
+    
     BOOL theDynamicFlag = NO;
     BOOL theReadonlyFlag = NO;
 //    BOOL theNonAtomicFlag = NO;
