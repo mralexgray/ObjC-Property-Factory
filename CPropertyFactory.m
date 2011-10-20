@@ -92,7 +92,6 @@
     // See http://developer.apple.com/library/ios/#DOCUMENTATION/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtPropertyIntrospection.html for all flags.
     for (unsigned int theAttributeIndex = 0; theAttributeIndex != theAttributeCount; ++theAttributeIndex)
         {
-//        NSLog(@"%s: %s", theAttributes[theAttributeIndex].name, theAttributes[theAttributeIndex].value);
         if (strlen(theAttributes[theAttributeIndex].name) == 1)
             {
             switch (theAttributes[theAttributeIndex].name[0]) {
@@ -114,7 +113,6 @@
     
     if (theDynamicFlag == NO)
         {
-//        NSLog(@"Cannot create IMPs for non-dynamic properties");
         return(NO);
         }
 
@@ -132,8 +130,6 @@
 
     id theGetterIMPBlock = NULL;
     id theSetterIMPBlock = NULL;
-
-//    NSLog(@"Creating accessors for: %@", thePropertyName);
 
     // #####################################################################
     // http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
