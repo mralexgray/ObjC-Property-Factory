@@ -77,6 +77,8 @@
     
 - (BOOL)configure:(Class)inClass property:(objc_property_t)inProperty getter:(PropertyGetterBlock)inGetter setter:(PropertySetterBlock)inSetter error:(NSError **)outError
     {
+    BOOL theResult = NO;
+    
     inGetter = [inGetter copy];
     inSetter = [inSetter copy];
     
@@ -111,101 +113,96 @@
             }
         }
     
-    if (theDynamicFlag == NO)
+    if (theDynamicFlag == YES && theType != NULL)
         {
-        return(NO);
-        }
+        NSString *thePropertyName = [NSString stringWithUTF8String:property_getName(inProperty)];
+        NSString *theGetterName = thePropertyName;
+        NSString *theSetterName = [NSString stringWithFormat:@"set%@%@:", [[thePropertyName substringToIndex:1] uppercaseString], [thePropertyName substringFromIndex:1]];
 
-    if (theType == NULL)
-        {
-        return(NO);
-        }
+        NSString *theGetterType = [NSString stringWithFormat:@"%s@:", theType];
+        NSString *theSetterType = [NSString stringWithFormat:@"v@:%s", theType];
 
-    NSString *thePropertyName = [NSString stringWithUTF8String:property_getName(inProperty)];
-    NSString *theGetterName = thePropertyName;
-    NSString *theSetterName = [NSString stringWithFormat:@"set%@%@:", [[thePropertyName substringToIndex:1] uppercaseString], [thePropertyName substringFromIndex:1]];
+        id theGetterIMPBlock = NULL;
+        id theSetterIMPBlock = NULL;
 
-    NSString *theGetterType = [NSString stringWithFormat:@"%s@:", theType];
-    NSString *theSetterType = [NSString stringWithFormat:@"v@:%s", theType];
-
-    id theGetterIMPBlock = NULL;
-    id theSetterIMPBlock = NULL;
-
-    // #####################################################################
-    // http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
-    if (theType[0] == '@')
-        {
-        theGetterIMPBlock = ^(id _self) { return(inGetter(_self, thePropertyName)); };
-        theSetterIMPBlock = ^(id _self, NSString *value) { inSetter(_self, thePropertyName, value); };
-        }
-    else if (theType[0] != '{')
-        {
-        if (strcmp(theType, @encode(BOOL)) == 0)
+        // #####################################################################
+        // http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
+        if (theType[0] == '@')
             {
-            theGetterIMPBlock = SIMPLE_GETTER(bool, Bool);
-            theSetterIMPBlock = SIMPLE_SETTER(bool, Bool);
+            theGetterIMPBlock = ^(id _self) { return(inGetter(_self, thePropertyName)); };
+            theSetterIMPBlock = ^(id _self, NSString *value) { inSetter(_self, thePropertyName, value); };
             }
-        else if (strcmp(theType, @encode(short)) == 0)
+        else if (theType[0] != '{')
             {
-            theGetterIMPBlock = SIMPLE_GETTER(short, Short);
-            theSetterIMPBlock = SIMPLE_SETTER(short, Short);
+            if (strcmp(theType, @encode(BOOL)) == 0)
+                {
+                theGetterIMPBlock = SIMPLE_GETTER(bool, Bool);
+                theSetterIMPBlock = SIMPLE_SETTER(bool, Bool);
+                }
+            else if (strcmp(theType, @encode(short)) == 0)
+                {
+                theGetterIMPBlock = SIMPLE_GETTER(short, Short);
+                theSetterIMPBlock = SIMPLE_SETTER(short, Short);
+                }
+            else if (strcmp(theType, @encode(int)) == 0)
+                {
+                theGetterIMPBlock = SIMPLE_GETTER(int, Int);
+                theSetterIMPBlock = SIMPLE_SETTER(int, Int);
+                }
+            else if (strcmp(theType, @encode(unsigned int)) == 0)
+                {
+                theGetterIMPBlock = SIMPLE_GETTER(unsignedInt, UnsignedInt);
+                theSetterIMPBlock = SIMPLE_SETTER(unsigned int, UnsignedInt);
+                }
+            else if (strcmp(theType, @encode(long)) == 0)
+                {
+                theGetterIMPBlock = SIMPLE_GETTER(long, Long);
+                theSetterIMPBlock = SIMPLE_SETTER(long, Long);
+                }
+            else if (strcmp(theType, @encode(float)) == 0)
+                {
+                theGetterIMPBlock = SIMPLE_GETTER(float, Float);
+                theSetterIMPBlock = SIMPLE_SETTER(float, Float);
+                }
+            else if (strcmp(theType, @encode(double)) == 0)
+                {
+                theGetterIMPBlock = SIMPLE_GETTER(double, Double);
+                theSetterIMPBlock = SIMPLE_SETTER(double, Double);
+                }
+            else
+                {
+                NSAssert1(NO, @"Unknown simple type: '%s'", theType);
+                }
             }
-        else if (strcmp(theType, @encode(int)) == 0)
+        else if (theType[0] == '{')
             {
-            theGetterIMPBlock = SIMPLE_GETTER(int, Int);
-            theSetterIMPBlock = SIMPLE_SETTER(int, Int);
+            #if TARGET_OS_IPHONE == 0
+            if (strcmp(theType, @encode(NSPoint)) == 0)
+                {
+                theGetterIMPBlock = STRUCT_GETTER(NSPoint);
+                theSetterIMPBlock = STRUCT_SETTER(NSPoint);
+                }
+            #endif
             }
-        else if (strcmp(theType, @encode(unsigned int)) == 0)
-            {
-            theGetterIMPBlock = SIMPLE_GETTER(unsignedInt, UnsignedInt);
-            theSetterIMPBlock = SIMPLE_SETTER(unsigned int, UnsignedInt);
-            }
-        else if (strcmp(theType, @encode(long)) == 0)
-            {
-            theGetterIMPBlock = SIMPLE_GETTER(long, Long);
-            theSetterIMPBlock = SIMPLE_SETTER(long, Long);
-            }
-        else if (strcmp(theType, @encode(float)) == 0)
-            {
-            theGetterIMPBlock = SIMPLE_GETTER(float, Float);
-            theSetterIMPBlock = SIMPLE_SETTER(float, Float);
-            }
-        else if (strcmp(theType, @encode(double)) == 0)
-            {
-            theGetterIMPBlock = SIMPLE_GETTER(double, Double);
-            theSetterIMPBlock = SIMPLE_SETTER(double, Double);
-            }
-        else
-            {
-            NSAssert1(NO, @"Unknown simple type: '%s'", theType);
-            }
-        }
-    else if (theType[0] == '{')
-        {
-        #if TARGET_OS_IPHONE == 0
-        if (strcmp(theType, @encode(NSPoint)) == 0)
-            {
-            theGetterIMPBlock = STRUCT_GETTER(NSPoint);
-            theSetterIMPBlock = STRUCT_SETTER(NSPoint);
-            }
-        #endif
-        }
 
-    // #####################################################################
+        // #####################################################################
 
-    NSAssert(theGetterIMPBlock != NULL, @"No getter implementation block");
-    NSAssert(inGetter != NULL, @"No getter block");
+        NSAssert(theGetterIMPBlock != NULL, @"No getter implementation block");
+        NSAssert(inGetter != NULL, @"No getter block");
 
-    IMP theGetterFunctionPtr = imp_implementationWithBlock((__bridge void *)theGetterIMPBlock);
-    class_addMethod(inClass, NSSelectorFromString(theGetterName), theGetterFunctionPtr, [theGetterType UTF8String]);
+        IMP theGetterFunctionPtr = imp_implementationWithBlock((__bridge void *)theGetterIMPBlock);
+        class_addMethod(inClass, NSSelectorFromString(theGetterName), theGetterFunctionPtr, [theGetterType UTF8String]);
 
-    if (theReadonlyFlag == NO)
-        {
-        NSAssert(theSetterIMPBlock != NULL, @"No setter implementation block");
-        NSAssert(inSetter != NULL, @"No setter block");
+        if (theReadonlyFlag == NO)
+            {
+            NSAssert(theSetterIMPBlock != NULL, @"No setter implementation block");
+            NSAssert(inSetter != NULL, @"No setter block");
 
-        IMP theSetterFunctionPtr = imp_implementationWithBlock((__bridge void *)theSetterIMPBlock);
-        class_addMethod(inClass, NSSelectorFromString(theSetterName), theSetterFunctionPtr, [theSetterType UTF8String]);
+            IMP theSetterFunctionPtr = imp_implementationWithBlock((__bridge void *)theSetterIMPBlock);
+            class_addMethod(inClass, NSSelectorFromString(theSetterName), theSetterFunctionPtr, [theSetterType UTF8String]);
+            }
+
+        theResult = YES;
         }
 
     if (theAttributes != NULL)
@@ -213,7 +210,7 @@
         free(theAttributes);
         }
 
-    return(YES);
+    return(theResult);
     }
 
 
